@@ -13,22 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/ornek', function (){
-    return "Bu bir örnektir";
-});
-
-Route::get('/api/v1/ornek',function (){
-    return ['Ornek'=>'Bu bir ornektir'];
-});
-
-Route::get('/urun/{urunadi}/{id?}', function ($urunadi,$id=0){
-    return "Ürün Adı: $id $urunadi";
-})->name("ornek_1");
-
-Route::get("/ornek1", function () {
-    return redirect()->route("ornek_1", ["urunadi"=>"elma", "id"=>5]);
-});
+Route::get('/', [\App\Http\Controllers\AnasayfaController::class,'index'])->name('anasayfa');
